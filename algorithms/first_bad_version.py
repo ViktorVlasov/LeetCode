@@ -27,6 +27,7 @@ class Solution:
     def isBadVersion(self, version: int) -> bool:
         return version >= self.bad
 
+    # solution
     def firstBadVersion(self, n: int) -> int:
         l = 1
         r = n

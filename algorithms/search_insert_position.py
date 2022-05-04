@@ -27,41 +27,34 @@ nums contains distinct values sorted in ascending order.
 """
 
 def searchInsert(nums: list[int], target: int) -> int:
-    l = -1
-    r = len(nums)
-    while l < r - 1:
+    l = 0
+    r = len(nums) - 1
+    while l <= r:
         m = l + (r - l) // 2
-        if nums[m] < target:
-            l = m
+        if nums[m] == target:
+            return m
+        elif nums[m] < target:
+            l = m + 1
         else:
-            r = m
-    if r >= len(nums):
-        r = len(nums) - 1
-    if target > nums[r]:
-        return r + 1
-    elif target == nums[r] or (target < nums[r] and target > nums[l]):
-        return r
-    elif target < nums[l]:
-        return 0
+            r = m - 1 
+    return l
 
 
+# pytest
+nums = [1, 3, 5, 6]
 
 def test_1():
-    nums = [1,3,5,6]
     target = 5
     assert searchInsert(nums, target) == 2
 
 def test_2():
-    nums = [1,3,5,6] 
     target = 2
     assert searchInsert(nums, target) == 1
 
 def test_3():
-    nums = [1,3,5,6]
     target = 7
     assert searchInsert(nums, target) == 4
 
 def test_4():
-    nums = [1,3,5,6]
     target = -1
     assert searchInsert(nums, target) == 0
