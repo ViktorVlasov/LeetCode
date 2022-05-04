@@ -13,7 +13,6 @@ class Solution:
         return -1
 
 # pytest
-
 nums = [-1, 0, 3, 5, 9, 12] 
 test = Solution()
 
